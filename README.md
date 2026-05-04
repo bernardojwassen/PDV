@@ -1,4 +1,4 @@
-Protótipo de PDV (Ponto de Venda)
+###Protótipo de PDV (Ponto de Venda)###
 Este projeto consiste no desenvolvimento de um sistema de Ponto de Venda (PDV) Web voltado para a otimização de pequenos comércios, como mercados de bairro, conveniências e mercearias familiares.
 
 🎯 Objetivos
