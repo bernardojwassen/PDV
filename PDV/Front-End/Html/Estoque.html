@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV Web - Estoque</title>
+
+    <link rel="stylesheet" href="../Style/Estoque.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <nav class="navbar">
+            <a href="Venda.html" class="nav-item">🛒 VENDA</a>
+            <a href="#" class="nav-item">📦 ESTOQUE</a>
+            <a href="Relatorios.html" class="nav-item">📊 RELATÓRIOS</a>
+        </nav>
+
+        <section class="topo-estoque">
+
+            <div class="busca">
+                <label for="buscar">BUSCAR:</label>
+
+                <input
+                    type="text"
+                    id="buscar"
+                    placeholder="Nome ou código de barras"
+                >
+            </div>
+
+            <button class="btn-novo">
+                + NOVO PRODUTO
+            </button>
+
+        </section>
+
+        <section class="tabela-section">
+
+            <table class="tabela-produtos">
+
+                <thead>
+                    <tr>
+                        <th>PRODUTO</th>
+                        <th>PREÇO</th>
+                        <th>QTD ESTOQUE</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lista-produtos">
+
+                    <!--
+                    Produtos serão carregados dinamicamente
+                    a partir do banco de dados.
+
+                    Exemplo:
+
+                    <tr>
+                        <td>Arroz Tio João</td>
+                        <td>R$ 25,90</td>
+                        <td>49</td>
+                        <td>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+                    -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

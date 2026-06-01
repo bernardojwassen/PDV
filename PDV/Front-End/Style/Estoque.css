@@ -1,0 +1,167 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1c1f24;
+    color:#d8d8d8;
+    font-family:"Courier New", monospace;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+
+    border:2px solid #777;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-around;
+
+    padding:15px;
+
+    border-bottom:2px dashed #777;
+}
+
+.nav-item{
+    color:#d8d8d8;
+    text-decoration:none;
+
+    border:1px solid #777;
+
+    padding:10px 20px;
+
+    transition:.3s;
+}
+
+.nav-item:hover{
+    background:#2c313b;
+}
+
+.topo-estoque{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px;
+
+    border-bottom:2px dashed #777;
+}
+
+.busca{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.busca input{
+    width:300px;
+
+    background:#252932;
+    color:white;
+
+    border:1px solid #777;
+
+    padding:10px;
+
+    outline:none;
+}
+
+.btn-novo{
+    background:transparent;
+    color:#d8d8d8;
+
+    border:1px solid #777;
+
+    padding:12px 20px;
+
+    cursor:pointer;
+    transition:.3s;
+
+    font-family:"Courier New", monospace;
+}
+
+.btn-novo:hover{
+    background:#2c313b;
+}
+
+.tabela-section{
+    padding:20px;
+}
+
+.tabela-produtos{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.tabela-produtos th,
+.tabela-produtos td{
+    border:1px solid #777;
+    padding:12px;
+
+    text-align:left;
+}
+
+.tabela-produtos th{
+    background:#252932;
+}
+
+.tabela-produtos tr:hover{
+    background:#2c313b;
+}
+
+.acoes{
+    display:flex;
+    gap:10px;
+}
+
+.btn-editar,
+.btn-excluir{
+    background:transparent;
+
+    border:1px solid #777;
+
+    color:#d8d8d8;
+
+    padding:6px 10px;
+
+    cursor:pointer;
+
+    font-family:"Courier New", monospace;
+}
+
+.btn-editar:hover,
+.btn-excluir:hover{
+    background:#2c313b;
+}
+
+@media(max-width:768px){
+
+    .topo-estoque{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .busca{
+        width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .busca input{
+        width:100%;
+    }
+
+    .tabela-section{
+        overflow-x:auto;
+    }
+}

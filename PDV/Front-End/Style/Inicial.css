@@ -1,0 +1,122 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #1b1d21;
+      color: #d4d4d4;
+      font-family: "Courier New", monospace;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 900px;
+      max-width: 100%;
+      border: 2px solid #7a7a7a;
+      padding: 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px dashed #7a7a7a;
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+    }
+
+    .nav-link {
+      color: #d4d4d4;
+      text-decoration: none;
+      border: 1px solid #7a7a7a;
+      padding: 8px 20px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #2f343d;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #b8b8b8;
+    }
+
+    .info-box {
+      border: 2px solid #7a7a7a;
+      padding: 25px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .info-box h2 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .info-box p {
+      margin-bottom: 20px;
+    }
+
+    .info-box ul {
+      list-style: none;
+    }
+
+    .info-box li::before {
+      content: "* ";
+      color: #ffffff;
+    }
+
+    .info-box li {
+      margin-bottom: 8px;
+    }
+
+    .login-section {
+      text-align: center;
+      border-top: 2px dashed #7a7a7a;
+      padding-top: 30px;
+    }
+
+    .btn-login {
+      display: inline-block;
+      text-decoration: none;
+      color: #d4d4d4;
+      border: 1px solid #7a7a7a;
+      padding: 12px 30px;
+      transition: 0.3s;
+    }
+
+    .btn-login:hover {
+      background-color: #2f343d;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-link {
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 1.2rem;
+      }
+    }

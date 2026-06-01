@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV Web - Venda</title>
+
+    <link rel="stylesheet" href="../Style/Venda.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <nav class="navbar">
+            <a href="#" class="nav-item">🛒 VENDA</a>
+            <a href="#" class="nav-item">📦 ESTOQUE</a>
+            <a href="#" class="nav-item">📊 RELATÓRIOS</a>
+        </nav>
+
+        <section class="busca-produto">
+
+            <label for="produto">
+                PRODUTO:
+            </label>
+
+            <input
+                type="text"
+                id="produto"
+                placeholder="Digite o nome ou código de barras..."
+            >
+
+            <button class="btn-add">
+                +
+            </button>
+
+        </section>
+
+        <section class="painel-venda">
+
+            <!-- CARRINHO -->
+
+            <div class="carrinho">
+
+                <h2>CARRINHO DE COMPRAS</h2>
+
+                <div class="linha"></div>
+
+                <table class="tabela-carrinho">
+
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Qtd.</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-produtos">
+
+                        <!--
+                        Produtos serão inseridos dinamicamente
+                        após consulta ao banco de dados.
+
+                        Exemplo:
+
+                        <tr>
+                            <td>Arroz 5kg</td>
+                            <td>1</td>
+                            <td>R$ 25,90</td>
+                        </tr>
+                        -->
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn-remover">
+                    REMOVER ITEM SELECIONADO
+                </button>
+
+            </div>
+
+            <!-- RESUMO -->
+
+            <div class="resumo">
+
+                <h2>RESUMO DA COMPRA</h2>
+
+                <div class="linha"></div>
+
+                <div class="valores">
+
+                    <p>
+                        <span>SUBTOTAL:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </p>
+
+                    <p>
+                        <span>DESCONTO:</span>
+                        <span id="desconto">R$ 0,00</span>
+                    </p>
+
+                </div>
+
+                <div class="linha"></div>
+
+                <div class="total">
+                    TOTAL: <span id="total">R$ 0,00</span>
+                </div>
+
+                <div class="linha"></div>
+
+                <div class="acoes">
+
+                    <button class="btn-cancelar">
+                        ✖ CANCELAR
+                    </button>
+
+                    <button class="btn-finalizar">
+                        ✔ FINALIZAR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

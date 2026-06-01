@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1c1f24;
+    color:#d8d8d8;
+    font-family:"Courier New", monospace;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+
+    border:2px solid #777;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-around;
+
+    padding:15px;
+
+    border-bottom:2px dashed #777;
+}
+
+.nav-item{
+    color:#d8d8d8;
+    text-decoration:none;
+
+    border:1px solid #777;
+
+    padding:10px 20px;
+
+    transition:.3s;
+}
+
+.nav-item:hover{
+    background:#2c313b;
+}
+
+.busca-produto{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:20px;
+
+    border-bottom:2px dashed #777;
+}
+
+.busca-produto label{
+    white-space:nowrap;
+}
+
+.busca-produto input{
+    flex:1;
+
+    background:#252932;
+    color:white;
+
+    border:1px solid #777;
+
+    padding:12px;
+
+    outline:none;
+}
+
+.btn-add{
+    width:45px;
+    height:45px;
+
+    border:1px solid #777;
+
+    background:transparent;
+    color:#b569ff;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+}
+
+.btn-add:hover{
+    background:#2c313b;
+}
+
+.painel-venda{
+    display:grid;
+    grid-template-columns:1fr 350px;
+}
+
+.carrinho{
+    padding:20px;
+
+    border-right:2px dashed #777;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.resumo{
+    padding:20px;
+}
+
+h2{
+    font-size:1rem;
+    margin-bottom:15px;
+}
+
+.linha{
+    border-top:2px dashed #777;
+    margin:10px 0 20px;
+}
+
+.lista-produtos{
+    list-style:none;
+
+    flex:1;
+
+    line-height:2;
+}
+
+.btn-remover{
+    margin-top:20px;
+
+    background:transparent;
+    color:#d8d8d8;
+
+    border:1px solid #777;
+
+    padding:12px;
+
+    cursor:pointer;
+}
+
+.btn-remover:hover{
+    background:#2c313b;
+}
+
+.valores p{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.total{
+    text-align:center;
+
+    font-size:1.4rem;
+    font-weight:bold;
+
+    padding:20px 0;
+}
+
+.acoes{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.btn-cancelar,
+.btn-finalizar{
+    flex:1;
+
+    border:1px solid #777;
+
+    background:transparent;
+
+    padding:12px;
+
+    cursor:pointer;
+
+    font-family:"Courier New", monospace;
+}
+
+.btn-cancelar{
+    color:#ff5f7a;
+}
+
+.btn-finalizar{
+    color:#46d38b;
+}
+
+.btn-cancelar:hover,
+.btn-finalizar:hover{
+    background:#2c313b;
+}
+
+@media(max-width:900px){
+
+    .painel-venda{
+        grid-template-columns:1fr;
+    }
+
+    .carrinho{
+        border-right:none;
+        border-bottom:2px dashed #777;
+    }
+
+    .acoes{
+        flex-direction:column;
+    }
+
+    .busca-produto{
+        flex-wrap:wrap;
+    }
+
+    .btn-add{
+        width:100%;
+    }
+}

@@ -1,0 +1,113 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1c1f24;
+    color:#d8d8d8;
+    font-family:"Courier New", monospace;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.overlay{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-pagamento{
+    width:100%;
+    max-width:700px;
+
+    border:2px solid #777;
+
+    padding:30px;
+}
+
+.modal-pagamento h1{
+    text-align:center;
+    font-size:1.4rem;
+    margin-bottom:20px;
+}
+
+.modal-pagamento h2{
+    margin-bottom:25px;
+    font-size:1.1rem;
+}
+
+.linha{
+    border-top:2px dashed #777;
+    margin:20px 0;
+}
+
+.formas-pagamento{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+}
+
+.btn-pagamento,
+.btn-voltar{
+    background:transparent;
+    color:#d8d8d8;
+
+    border:1px solid #777;
+
+    padding:15px;
+
+    font-family:"Courier New", monospace;
+    font-size:1rem;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-pagamento:hover,
+.btn-voltar:hover{
+    background:#2c313b;
+}
+
+.btn-confirmar{
+    width:100%;
+
+    background:transparent;
+    color:#d8d8d8;
+
+    border:1px solid #777;
+
+    padding:18px;
+
+    font-family:"Courier New", monospace;
+    font-size:1rem;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-confirmar:hover{
+    background:#2c313b;
+}
+
+@media(max-width:600px){
+
+    .formas-pagamento{
+        grid-template-columns:1fr;
+    }
+
+    .modal-pagamento{
+        padding:20px;
+    }
+
+    .modal-pagamento h1{
+        font-size:1.1rem;
+    }
+}
