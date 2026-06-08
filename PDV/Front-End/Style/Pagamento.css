@@ -1,113 +1,117 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* Reset e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    background:#1c1f24;
-    color:#d8d8d8;
-    font-family:"Courier New", monospace;
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* Overlay ocupando a tela inteira com fundo semi-transparente */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.overlay{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+/* Caixa Centralizada do Modal */
+.modal-pagamento {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.modal-pagamento{
-    width:100%;
-    max-width:700px;
-
-    border:2px solid #777;
-
-    padding:30px;
+.modal-pagamento h1 {
+    font-size: 1.4em;
+    color: #333;
+    text-align: center;
 }
 
-.modal-pagamento h1{
-    text-align:center;
-    font-size:1.4rem;
-    margin-bottom:20px;
+#valor-total {
+    color: #27ae60;
+    font-weight: bold;
 }
 
-.modal-pagamento h2{
-    margin-bottom:25px;
-    font-size:1.1rem;
+.linha {
+    height: 1px;
+    background-color: #eee;
+    margin: 15px 0;
 }
 
-.linha{
-    border-top:2px dashed #777;
-    margin:20px 0;
+.modal-pagamento h2 {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin-bottom: 15px;
 }
 
-.formas-pagamento{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:20px;
+/* Grade de Opções de Pagamento */
+.formas-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.btn-pagamento,
-.btn-voltar{
-    background:transparent;
-    color:#d8d8d8;
-
-    border:1px solid #777;
-
-    padding:15px;
-
-    font-family:"Courier New", monospace;
-    font-size:1rem;
-
-    cursor:pointer;
-    transition:.3s;
+.btn-pagamento {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 14px;
+    font-size: 1.1em;
+    text-align: left;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
 }
 
-.btn-pagamento:hover,
-.btn-voltar:hover{
-    background:#2c313b;
+.btn-pagamento:hover {
+    background-color: #eef1f3;
+    border-color: #3498db;
+    color: #3498db;
 }
 
-.btn-confirmar{
-    width:100%;
-
-    background:transparent;
-    color:#d8d8d8;
-
-    border:1px solid #777;
-
-    padding:18px;
-
-    font-family:"Courier New", monospace;
-    font-size:1rem;
-
-    cursor:pointer;
-    transition:.3s;
+.btn-voltar {
+    background-color: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5px;
+    transition: background-color 0.2s;
 }
 
-.btn-confirmar:hover{
-    background:#2c313b;
+.btn-voltar:hover {
+    background-color: #fdf2f2;
 }
 
-@media(max-width:600px){
+/* Botão de Finalização Conclusiva */
+.btn-confirmar {
+    width: 100%;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(39, 174, 96, 0.2);
+    transition: background-color 0.2s;
+}
 
-    .formas-pagamento{
-        grid-template-columns:1fr;
-    }
-
-    .modal-pagamento{
-        padding:20px;
-    }
-
-    .modal-pagamento h1{
-        font-size:1.1rem;
-    }
+.btn-confirmar:hover {
+    background-color: #218c4e;
 }

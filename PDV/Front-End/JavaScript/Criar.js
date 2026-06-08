@@ -1,44 +1,50 @@
-const formCadastro = document.querySelector(".cadastro-form");
+// Criar.js
+document.addEventListener("DOMContentLoaded", () => {
+    const formulario = document.querySelector(".cadastro-form");
 
-if (formCadastro) {
+    if (formulario) {
+        formulario.addEventListener("submit", (e) => {
+            e.preventDefault(); // Impede a página de recarregar sumindo com os dados
 
-    const botao = document.querySelector(".btn-cadastro");
+            // Captura os dados exatamente pelos IDs do seu HTML
+            const nome = document.getElementById("nome").value.trim();
+            const comercio = document.getElementById("comercio").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
+            const confirmarSenha = document.getElementById("confirmar").value;
 
-    botao.addEventListener("click", (e) => {
+            // Validação extra de segurança para campos vazios
+            if (!nome || !comercio || !email || !senha || !confirmarSenha) {
+                alert("Por favor, preencha todos os campos obrigatórios.");
+                return;
+            }
 
-        e.preventDefault();
+            // Verifica se as senhas são iguais
+            if (senha !== confirmarSenha) {
+                alert("As senhas digitadas não coincidem!");
+                return;
+            }
 
-        const nome = document.getElementById("nome").value;
-        const comercio = document.getElementById("comercio").value;
-        const email = document.getElementById("email").value;
-        const senha = document.getElementById("senha").value;
-        const confirmar = document.getElementById("confirmar").value;
+            // Busca os usuários já cadastrados ou cria uma lista vazia
+            const usuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
+            
+            // Verifica se o e-mail digitado já foi usado por outra pessoa
+            const emailExiste = usuariosCadastrados.some(user => user.email === email);
+            if (emailExiste) {
+                alert("Este e-mail já está registrado no sistema.");
+                return;
+            }
 
-        if (
-            !nome ||
-            !comercio ||
-            !email ||
-            !senha ||
-            !confirmar
-        ) {
-            alert("Preencha todos os campos.");
-            return;
-        }
+            // Adiciona o novo usuário na lista do banco local
+            usuariosCadastrados.push({ nome, comercio, email, senha });
+            localStorage.setItem("usuarios", JSON.stringify(usuariosCadastrados));
 
-        if (senha !== confirmar) {
-            alert("As senhas não coincidem.");
-            return;
-        }
-
-        console.log({
-            nome,
-            comercio,
-            email,
-            senha
+            alert("Cadastro realizado com sucesso! Vamos para a tela de login.");
+            
+            // Redireciona o usuário para a página de Login
+            window.location.href = "Login.html";
         });
-
-        alert("Cadastro realizado com sucesso.");
-
-        // window.location.href = "Login.html";
-    });
-}
+    } else {
+        console.error("Formulário '.cadastro-form' não foi encontrado na página.");
+    }
+});
