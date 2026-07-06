@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - PDV Web</title>
+    <link rel="stylesheet" href="../Style/Relatorio.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="navbar">
+            <a href="Inicial.html" class="logo">PDV WEB</a>
+            <nav class="nav-links">
+                <a href="Principal.html">VENDA</a>
+                <a href="Estoque.html">ESTOQUE</a>
+                <a href="Relatorio.html" class="active">RELATÓRIOS</a>
+            </nav>
+            <a href="Login.html" class="voltar">SAIR</a>
+        </header>
+
+        <section class="relatorios-section">
+            <h1>RELATÓRIO GERENCIAL</h1>
+            <p class="subtitle">Visão geral do inventário e desempenho de vendas.</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Total Faturado</h3>
+                    <p id="total-faturado" class="destaque-verde">R$ 0,00</p>
+                </div>
+                <div class="card">
+                    <h3>Vendas Realizadas</h3>
+                    <p id="total-vendas">0</p>
+                </div>
+                <div class="card">
+                    <h3>Produtos em Estoque</h3>
+                    <p id="total-estoque">0</p>
+                </div>
+            </div>
+
+            <div class="dashboard-tabelas">
+                <div class="table-container">
+                    <h2>Produtos Mais Vendidos</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Qtd. Vendida</th>
+                                <th>Total Gerado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-mais-vendidos">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container">
+                    <h2>Atenção: Estoque Baixo (&lt; 5 un.)</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Qtd. Atual</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-baixo-estoque">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../JavaScript/Relatorio.js"></script>
+</body>
+</html>
