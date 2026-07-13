@@ -25,20 +25,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Busca os usuários já cadastrados ou cria uma lista vazia
-            const usuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
-            
-            // Verifica se o e-mail digitado já foi usado por outra pessoa
-            const emailExiste = usuariosCadastrados.some(user => user.email === email);
-            if (emailExiste) {
-                alert("Este e-mail já está registrado no sistema.");
-                return;
-            }
+            const dadosCadastro = { nome, comercio, email, senha };
 
-            // Adiciona o novo usuário na lista do banco local
-            usuariosCadastrados.push({ nome, comercio, email, senha });
-            localStorage.setItem("usuarios", JSON.stringify(usuariosCadastrados));
-
+            fetch('http://localhost:3000/api/usuarios', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosCadastro)
+            })
+            .then(async response => {
+                if (!response.ok) {
+                    const erro = await response.json();
+                    throw new Error(erro.error || 'Erro ao cadastrar.');
+                }
+                return response.json();
+            })
+            .then(() => {
+                alert("Cadastro realizado com sucesso! Vamos para a tela de login.");
+                window.location.href = "Login.html";
+            })
+            .catch(erro => {
+                alert(erro.message);
+            });
+                
             alert("Cadastro realizado com sucesso! Vamos para a tela de login.");
             
             // Redireciona o usuário para a página de Login

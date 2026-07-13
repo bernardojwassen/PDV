@@ -21,9 +21,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const busca = inputProduto.value.trim().toLowerCase();
         if (!busca) return;
 
-        const produtosEstoque = JSON.parse(localStorage.getItem("produtos")) || [];
-        const produto = produtosEstoque.find(p => p.nome.toLowerCase().includes(busca) || p.id === busca);
+        fetch(`http://localhost:3000/api/produtos?busca=${busca}`)
+    .then(res => res.json())
+    .then(produtos => {
+        const produto = produtos[0]; // Pega o primeiro correspondente vindo do Postgres
 
+        if (!produto) {
+            alert("Produto não localizado no estoque.");
+            return;
+        }
+
+        if (produto.estoque <= 0) {
+            alert("Atenção: Este produto está esgotado!");
+            return;
+        }
+
+        const itemExistente = carrinho.find(item => item.id === produto.id);
+        if (itemExistente) {
+            itemExistente.qtd++;
+        } else {
+            carrinho.push({
+                id: produto.id,
+                nome: produto.nome,
+                preco: produto.preco,
+                qtd: 1
+            });
+        }
+        atualizarInterface();
+    })
+    
         if (!produto) {
             alert("Produto não localizado no estoque.");
             return;

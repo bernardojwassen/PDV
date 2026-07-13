@@ -9,16 +9,29 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById("email").value.trim();
             const senha = document.getElementById("senha").value;
 
-            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            const usuarioValido = usuarios.find(user => user.email === email && user.senha === senha);
+            const dadosLogin = { email, senha };
 
-            if (usuarioValido) {
+            fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosLogin)
+            })
+            .then(async response => {
+                if (!response.ok) {
+                    const erro = await response.json();
+                    throw new Error(erro.error || 'Usuário ou senha inválidos.');
+                }
+                return response.json();
+            })
+            .then(usuarioValido => {
+                // Mantemos no localStorage apenas a sessão ativa para o front saber quem está logado
                 localStorage.setItem("usuarioLogado", JSON.stringify(usuarioValido));
                 alert(`Login efetuado! Bem-vindo ao painel do(a) ${usuarioValido.comercio}.`);
-                window.location.href = "Principal.html"; // Vai para a tela de vendas
-            } else {
-                alert("Usuário ou senha inválidos. Verifique os dados.");
-            }
-        });
-    }
+                window.location.href = "Principal.html";
+            })
+            .catch(erro => {
+                alert(erro.message);
+            });
+                    });
+        }
 });

@@ -40,25 +40,50 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Baixa real de estoque
-            let produtosEstoque = JSON.parse(localStorage.getItem("produtos")) || [];
+           const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+if (!usuarioLogado) {
+    alert("Sessão inválida. Faça login novamente.");
+    window.location.href = "Login.html";
+    return;
+}
 
-            carrinho.forEach(itemVendido => {
-                const produtoNoEstoque = produtosEstoque.find(p => p.id === itemVendido.id);
-                if (produtoNoEstoque) {
-                    produtoNoEstoque.estoque -= itemVendido.qtd;
-                    if (produtoNoEstoque.estoque < 0) produtoNoEstoque.estoque = 0;
-                }
-            });
+// Formata para o JSONB aceito pela procedure do seu banco.sql
+const itensFormatados = carrinho.map(item => ({
+    produto_id: parseInt(item.id),
+    quantidade: parseInt(item.qtd),
+    preco_unitario: parseFloat(item.preco)
+}));
 
-            // Grava os novos valores reduzidos de volta no banco local do estoque
-            localStorage.setItem("produtos", JSON.stringify(produtosEstoque));
+// Converte a string visual do front para o ENUM correto do Postgres
+let formaEnum = "Dinheiro";
+if (formaDePagamento.toLowerCase().includes("pix")) formaEnum = "Pix";
+if (formaDePagamento.toLowerCase().includes("cart")) formaEnum = "Cartao";
 
-            // Limpa o cache da venda efetuada
-            localStorage.removeItem("vendaAtualTotal");
-            localStorage.removeItem("carrinhoAtual");
+const dadosVenda = {
+    usuario_id: usuarioLogado.id,
+    forma_pagamento: formaEnum,
+    itens: itensFormatados
+};
 
-            alert(`Venda fechada com sucesso via ${formaDePagamento}!\nO estoque foi atualizado.`);
-            window.location.href = "Principal.html";
+fetch('http://localhost:3000/api/vendas', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dadosVenda)
+})
+.then(async res => {
+    if (!res.ok) {
+        const erro = await res.json();
+        throw new Error(erro.error || 'Erro ao registrar venda.');
+    }
+    return res.json();
+})
+.then(() => {
+    localStorage.removeItem("vendaAtualTotal");
+    localStorage.removeItem("carrinhoAtual");
+    alert(`Venda salva diretamente no PostgreSQL via ${formaEnum}!`);
+    window.location.href = "Principal.html";
+})
+.catch(erro => alert(erro.message));
         });
     }
 });
